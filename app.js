@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 const port = 3000
 
 var stocks = require('./api/controllers/stocks')
+var swagger = require('./api/controllers/swagger')
 
 var app = express()
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 app.use('/api/stocks', stocks)
+app.use('/api/docs', swagger)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -57,7 +59,7 @@ function onError (error) {
 }
 
 function onListening () {
-  const addr = server.address()
+  const addr = app.address()
   const bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port
@@ -68,4 +70,4 @@ app.listen(port)
 app.on('error', onError)
 app.on('listening', onListening)
 
-console.log("Server started on port " + port)
+console.log('Server started on port ' + port)
