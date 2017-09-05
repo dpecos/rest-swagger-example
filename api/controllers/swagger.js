@@ -27,6 +27,7 @@ const options = {
 const swaggerJSDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 const swaggerSpec = swaggerJSDoc(options)
+require('swagger-model-validator')(swaggerSpec)
 
 router.get('/json', function (req, res) {
   res.setHeader('Content-Type', 'application/json')
@@ -35,4 +36,15 @@ router.get('/json', function (req, res) {
 
 router.use('/', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
-module.exports = router
+function validateModel (name, model) {
+  const responseValidation = swaggerSpec.validateModel(name, model, false, true)
+  if (!responseValidation.valid) {
+    console.error(responseValidation.errors)
+    throw new Error(`Model doesn't match Swagger contract`)
+  }
+}
+
+module.exports = {
+  router,
+  validateModel
+}

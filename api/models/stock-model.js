@@ -20,7 +20,7 @@
  *   Stocks:
  *     type: array
  *     items:
- *       $ref '#definitions/Stock'
+ *       $ref: '#/definitions/Stock'
  */
 export default class Stock {
   constructor (id, name, currentPrice, lastUpdate) {

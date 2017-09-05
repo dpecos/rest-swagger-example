@@ -1,4 +1,5 @@
 import * as DAO from '../daos/'
+import * as Swagger from './swagger'
 
 const dao = DAO.getInstance('memory')
 
@@ -22,6 +23,7 @@ const router = express.Router()
  */
 router.get('/', (req, res, next) => {
   const response = dao.retrieveAll()
+  Swagger.validateModel('Stocks', response)
   res.send(response)
 })
 
@@ -48,6 +50,7 @@ router.get('/', (req, res, next) => {
  */
 router.get('/:id', (req, res, next) => {
   const response = dao.retrieve(parseInt(req.params.id, 10))
+  Swagger.validateModel('Stock', response)
   res.send(response)
 })
 
@@ -91,7 +94,9 @@ router.get('/:id', (req, res, next) => {
  *           $ref: '#/definitions/Stock'
  */
 router.put('/:id', (req, res, next) => {
+  Swagger.validateModel('TimeStamp', req.body)
   const response = dao.update(parseInt(req.params.id, 10), req.body.lastUpdate)
+  Swagger.validateModel('Stock', response)
   res.send(response)
 })
 
@@ -118,7 +123,9 @@ router.put('/:id', (req, res, next) => {
  *           $ref: '#/definitions/Stock'
  */
 router.post('/', (req, res, next) => {
+  Swagger.validateModel('Stock', req.body)
   const response = dao.create(req.body)
+  Swagger.validateModel('Stock', response)
   res.send(response)
 })
 
