@@ -3,7 +3,7 @@ About
 
 Project showing how to setup Swagger for a REST API develop with Node.js and Express.
 
-More details in the blog entry: https://danielpecos.com/2017/09/04/rest-api-with-node-js-and-swagger
+More details in the blog entry: https://danielpecos.com/2017/09/06/rest-api-with-node-js-and-swagger
 
 Installation
 ============
