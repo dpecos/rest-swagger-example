@@ -4,19 +4,22 @@
   "private": true,
   "scripts": {
     "start": "babel-node app.js",
-    "lint": "standard --fix"
+    "lint": "standard --fix",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "body-parser": "~1.17.1",
+    "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.6.3",
-    "express": "~4.15.2",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
     "jade": "~1.11.0",
-    "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2",
-    "swagger-jsdoc": "^1.9.7",
+    "morgan": "~1.9.1",
+    "serve-favicon": "~2.4.5",
+    "swagger-jsdoc": "^1.10.0",
     "swagger-model-validator": "^2.1.11",
-    "swagger-ui-express": "^2.0.7"
+    "swagger-ui-express": "^2.0.7",
+    "snyk": "^1.114.1"
   },
   "devDependencies": {
     "standard": "^10.0.3",
@@ -27,5 +30,6 @@
   },
   "standard": {
     "parser": "babel-eslint"
-  }
+  },
+  "snyk": true
 }
