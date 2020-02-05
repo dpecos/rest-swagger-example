@@ -19,7 +19,7 @@
     "swagger-jsdoc": "^1.10.3",
     "swagger-model-validator": "^2.1.11",
     "swagger-ui-express": "^2.0.7",
-    "snyk": "^1.278.2"
+    "snyk": "^1.290.1"
   },
   "devDependencies": {
     "standard": "^10.0.3",
