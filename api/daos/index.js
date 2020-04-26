@@ -1,13 +1,13 @@
-import StocksMemoryDAO from './stocks-memory-dao'
+import StocksMemoryDAO from './stocks-memory-dao.js';
 
-let memoryDAO = null
+let memoryDAO = null;
 
-export function getInstance (type) {
+export function getInstance(type) {
   if (type === 'memory') {
     if (memoryDAO === null) {
-      memoryDAO = new StocksMemoryDAO()
+      memoryDAO = new StocksMemoryDAO();
     }
-    return memoryDAO
+    return memoryDAO;
   }
-  throw new Error('Unknown DAO type ' + type)
+  throw new Error('Unknown DAO type ' + type);
 }

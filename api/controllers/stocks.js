@@ -1,10 +1,10 @@
-import * as DAO from '../daos/'
-import * as Swagger from './swagger'
+import * as DAO from '../daos/index.js';
+import * as Swagger from './swagger.js';
 
-const dao = DAO.getInstance('memory')
+const dao = DAO.getInstance('memory');
 
-const express = require('express')
-const router = express.Router()
+import express from 'express';
+export const router = express.Router();
 
 /**
  * @swagger
@@ -22,10 +22,10 @@ const router = express.Router()
  *           $ref: '#/definitions/Stocks'
  */
 router.get('/', (req, res, next) => {
-  const response = dao.retrieveAll()
-  Swagger.validateModel('Stocks', response)
-  res.send(response)
-})
+  const response = dao.retrieveAll();
+  Swagger.validateModel('Stocks', response);
+  res.send(response);
+});
 
 /**
  * @swagger
@@ -49,10 +49,10 @@ router.get('/', (req, res, next) => {
  *           $ref: '#/definitions/Stock'
  */
 router.get('/:id', (req, res, next) => {
-  const response = dao.retrieve(parseInt(req.params.id, 10))
-  Swagger.validateModel('Stock', response)
-  res.send(response)
-})
+  const response = dao.retrieve(parseInt(req.params.id, 10));
+  Swagger.validateModel('Stock', response);
+  res.send(response);
+});
 
 /**
  * @swagger
@@ -94,11 +94,11 @@ router.get('/:id', (req, res, next) => {
  *           $ref: '#/definitions/Stock'
  */
 router.put('/:id', (req, res, next) => {
-  Swagger.validateModel('TimeStamp', req.body)
-  const response = dao.update(parseInt(req.params.id, 10), req.body.lastUpdate)
-  Swagger.validateModel('Stock', response)
-  res.send(response)
-})
+  Swagger.validateModel('TimeStamp', req.body);
+  const response = dao.update(parseInt(req.params.id, 10), req.body.lastUpdate);
+  Swagger.validateModel('Stock', response);
+  res.send(response);
+});
 
 /**
  * @swagger
@@ -123,10 +123,8 @@ router.put('/:id', (req, res, next) => {
  *           $ref: '#/definitions/Stock'
  */
 router.post('/', (req, res, next) => {
-  Swagger.validateModel('Stock', req.body)
-  const response = dao.create(req.body)
-  Swagger.validateModel('Stock', response)
-  res.send(response)
-})
-
-module.exports = router
+  Swagger.validateModel('Stock', req.body);
+  const response = dao.create(req.body);
+  Swagger.validateModel('Stock', response);
+  res.send(response);
+});
