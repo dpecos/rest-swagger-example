@@ -17,7 +17,7 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "serve-favicon": "~2.4.5",
-    "snyk": "^1.518.0",
+    "snyk": "^1.685.0",
     "swagger-jsdoc": "^4.0.0",
     "swagger-model-validator": "^2.2.8",
     "swagger-ui-express": "^2.0.15"
